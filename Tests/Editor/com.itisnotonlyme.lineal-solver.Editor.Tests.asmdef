@@ -6,7 +6,9 @@
         "UnityEditor.TestRunner",
         "com.itisnotonlyme.lineal-solver.Editor"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
