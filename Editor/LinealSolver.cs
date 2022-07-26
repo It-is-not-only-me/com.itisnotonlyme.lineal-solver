@@ -94,18 +94,18 @@ namespace ItIsNotOnlyMe.LinealSolver
             IMatriz matrizE = matrizNInversa.Multiplicar(matrizP);
             IMatriz vectorC = matrizNInversa.Multiplicar(vectorB);
 
-            IMatriz xAnterior = vectorC;
-            IMatriz x = OperacionIteracion(matrizE, vectorC, xAnterior);
+            IMatriz vectorXAnterior = vectorC;
+            IMatriz vectorX = OperacionIteracion(matrizE, vectorC, vectorXAnterior);
 
             int iteracionesActual = 1;
-            while (CalculoDelError(x, xAnterior) > errorMaximo && iteracionesActual < cantidadDeIteracionesMaximas)
+            while (CalculoDelError(vectorX, vectorXAnterior) > errorMaximo && iteracionesActual < cantidadDeIteracionesMaximas)
             {
-                xAnterior = x;
-                x = OperacionIteracion(matrizE, vectorC, x);
+                vectorXAnterior = vectorX;
+                vectorX = OperacionIteracion(matrizE, vectorC, vectorX);
                 iteracionesActual++;
             }
 
-            return x;
+            return vectorX;
         }
 
         private static IMatriz OperacionIteracion(IMatriz matrizE, IMatriz vectorC, IMatriz vectorX)
@@ -127,7 +127,6 @@ namespace ItIsNotOnlyMe.LinealSolver
                 for (int y = (int)(tamanio - 1); y >= x; y--)
                 {
                     uint i = (uint)x, j = (uint)y;
-
                     matrizInversa[i, j] = 1 / matriz[j, j];
                     if (i != j)
                         matrizInversa[i, j] *= -matriz[i, j] / matriz[i, i];
@@ -138,9 +137,7 @@ namespace ItIsNotOnlyMe.LinealSolver
 
         private static bool CondicionDeValidez(IMatriz matrizA, IMatriz vectorB)
         {
-            bool matrizCuadrada = matrizA.EsCuadrada();
-            bool mismaDimension = matrizA.SonMultiplicables(vectorB);
-            return matrizCuadrada && mismaDimension;
+            return matrizA.EsCuadrada() && matrizA.SonMultiplicables(vectorB);
         }
     }
 }
