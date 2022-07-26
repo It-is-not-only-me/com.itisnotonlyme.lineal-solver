@@ -1,12 +1,14 @@
 {
-    "name": "com.itisnotonlyme.nombre",
+    "name": "com.itisnotonlyme.lineal-solver",
     "version": "1.0.0",
-    "displayName": "Nombre Lindo",
-    "description": "Descripcion linda",
+    "displayName": "Lineal Solver",
+    "description": "Una libreria con metodos numericos para resolver sistema de ecuaciones lineales",
     "unity": "2020.3",
     "keywords": [
-      "Key", 
-      "Words"
+      "Lineal", 
+      "Solver",
+      "Ecuations",
+      "Numeric"
     ],
     "author": {
       "name": "Juan Ignacio Biancuzzo",
